@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    url: jdbc:sqlserver://supplyappdb.database.windows.net:1433;database=supplydashboarddb;user=supplysaleapp@supplyappdb;password=Saleapp1@;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      dialect : org.hibernate.dialect.SQLServer2012Dialect
+server:
+  port: 9191
