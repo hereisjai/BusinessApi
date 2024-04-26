@@ -27,7 +27,7 @@ public class CustomerController {
 
 	@RequestMapping("/greet")
 	public @ResponseBody String greeting() {
-		return "Hello World";
+		return "Hello World People";
 	}
 
 	@GetMapping("/customers")
