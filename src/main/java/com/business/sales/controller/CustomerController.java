@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.business.sales.entity.Customer;
+import com.business.sales.entity.Customers;
 import com.business.sales.entity.repository.CustomerRepository;
 
 @RestController
@@ -29,22 +29,22 @@ public class CustomerController {
 	}
 
 	@GetMapping("/customers")
-	public List<Customer> getCustomers(){
+	public List<Customers> getCustomers(){
 		return repository.findAll();
 	}
 	@PostMapping("/customer")
-	public Customer addCustomer(@RequestBody Customer customer){
+	public Customers addCustomer(@RequestBody Customers customer){
 		return repository.save(customer);
 	}
 	
 	
 	@PutMapping("/customer/{id}")
-    public ResponseEntity<Customer> updateCustomer(@PathVariable(value = "id") Long id, @RequestBody Customer customerDetails) {
-        Optional<Customer> customerOptional = repository.findById(id);
+    public ResponseEntity<Customers> updateCustomer(@PathVariable(value = "id") Long id, @RequestBody Customers customerDetails) {
+        Optional<Customers> customerOptional = repository.findById(id);
         if (!customerOptional.isPresent()) {
             return ResponseEntity.notFound().build();
         }
-        Customer customer = customerOptional.get();
+        Customers customer = customerOptional.get();
         customer.setName(customerDetails.getName());
         customer.setEmail(customerDetails.getEmail());
         customer.setDoorNo(customerDetails.getDoorNo());
@@ -55,17 +55,17 @@ public class CustomerController {
         customer.setTotalQty(customerDetails.getTotalQty());
         customer.setLatitude(customerDetails.getLatitude());
         customer.setLongitude(customerDetails.getLongitude());
-        final Customer updatedCustomer = repository.save(customer);
+        final Customers updatedCustomer = repository.save(customer);
         return ResponseEntity.ok(updatedCustomer);
     }
 
     @DeleteMapping("/customer/{id}")
     public ResponseEntity<?> deleteCustomer(@PathVariable(value = "id") Long id) {
-        Optional<Customer> customerOptional = repository.findById(id);
+        Optional<Customers> customerOptional = repository.findById(id);
         if (!customerOptional.isPresent()) {
             return ResponseEntity.notFound().build();
         }
-        Customer customer = customerOptional.get();
+            Customers customer = customerOptional.get();
         repository.delete(customer);
         return ResponseEntity.ok().build();
     }
