@@ -14,9 +14,16 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Customer {
     @Id
-    @GeneratedValue
-    private int id;
+    private long phone; 
     private String name;
     private String email;
-    private long city;
+    private String doorNo;
+    private String city;
+    private String street;
+    private String village;
+    private long totalQty;
+    private String latitude;
+    private String longitude;
+    private boolean morningBuyer; // Indicates if the customer buys products in the morning
+    private boolean eveningBuyer; // Indicates if the customer buys products in the evening
 }
