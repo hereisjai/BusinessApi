@@ -34,6 +34,12 @@ public class CustomerController {
 	public List<Customers> getCustomers(){
 		return repository.findAll();
 	}
+
+    @GetMapping("/customers/{id}")
+	public Optional<Customers> getCustomerbyId(){
+		return repository.findById(id);
+	}
+
 	@PostMapping("/customer")
 	public Customers addCustomer(@RequestBody Customers customer){
 		return repository.save(customer);
