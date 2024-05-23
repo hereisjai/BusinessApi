@@ -48,8 +48,6 @@ public class SupplierController {
         supplierService.deleteSupplier(id);
     }
 
-    
-    @Autowired
     @GetMapping("/{year}/{month}/{supplierId}")
     public ResponseEntity<SupplierInfoResponse> getSupplierInfoForMonth(
                 @PathVariable int year,
