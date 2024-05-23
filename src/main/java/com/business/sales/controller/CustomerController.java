@@ -35,10 +35,7 @@ public class CustomerController {
 		return repository.findAll();
 	}
 
-    @GetMapping("/customerInfo/{id}")
-	public Optional<Customers> getCustomerbyId(@PathVariable(value = "id") Long id){
-		return repository.findById(id);
-	}
+
 
 	@PostMapping("/customer")
 	public Customers addCustomer(@RequestBody Customers customer){
