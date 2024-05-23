@@ -56,9 +56,9 @@ public class SupplierInfoController {
 
     @GetMapping("/{year}/{month}/{supplierId}")
     public ResponseEntity<SupplierInfoResponse> getSupplierInfoForMonth(
-            @PathVariable int year,
-            @PathVariable int month,
-            @PathVariable int supplierId
+            @PathVariable Integer year,
+            @PathVariable Integer month,
+            @PathVariable Integer supplierId
     ) {
         // Implement logic to retrieve supplier information for the specified month, year, and supplierId
         SupplierInfoResponse response = supplierInfoService.getSupplierInfoForMonthAndSupplier(year, month, supplierId);
