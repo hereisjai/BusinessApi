@@ -48,22 +48,18 @@ public class SupplierController {
         supplierService.deleteSupplier(id);
     }
 
-    @RestController
-@RequestMapping("/api/supplier-info")
-public class SupplierInfoController {
-
+    
     @Autowired
-
     @GetMapping("/{year}/{month}/{supplierId}")
     public ResponseEntity<SupplierInfoResponse> getSupplierInfoForMonth(
-            @PathVariable Integer year,
-            @PathVariable Integer month,
-            @PathVariable Integer supplierId
+                @PathVariable int year,
+                @PathVariable int month,
+                @PathVariable int supplierId
     ) {
-        // Implement logic to retrieve supplier information for the specified month, year, and supplierId
-        SupplierInfoResponse response = supplierInfoService.getSupplierInfoForMonthAndSupplier(year, month, supplierId);
-        return ResponseEntity.ok(response);
+            // Implement logic to retrieve supplier information for the specified month, year, and supplierId
+            SupplierInfoResponse response = supplierInfoService.getSupplierInfoForMonthAndSupplier(year, month, supplierId);
+            return ResponseEntity.ok(response);
+        }
     }
-}
 
 }
