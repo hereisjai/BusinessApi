@@ -1,5 +1,6 @@
 package com.business.sales.services;
 
+import java.sql.Date;
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.temporal.TemporalAdjusters;
@@ -36,8 +37,9 @@ public class SupplierInfoService {
                 // Implement logic to fetch supplier information for the specified month, year,
                 // and supplierId
 
-                LocalDate startDate = LocalDate.of(year, Month.of(month), 1);
-                LocalDate endDate = startDate.with(TemporalAdjusters.lastDayOfMonth());
+                LocalDate localDate = LocalDate.of(year, Month.of(month), 1);
+                Date startDate   = Date.valueOf(localDate);
+                Date endDate = Date.valueOf(localDate.with(TemporalAdjusters.lastDayOfMonth()));
 
                 Suppliers supplier = supplierRepository.findById(supplierId).orElseThrow(
                                 () -> new ResourceNotFoundException("Supplier not found with id: " + supplierId));
