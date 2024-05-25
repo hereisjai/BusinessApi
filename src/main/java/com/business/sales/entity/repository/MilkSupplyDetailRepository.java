@@ -1,4 +1,5 @@
 package com.business.sales.entity.repository;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -11,5 +12,7 @@ public interface MilkSupplyDetailRepository extends JpaRepository<MilkSupplyDeta
 
     List<MilkSupplyDetail> findBySupplierAndSupplyDateBetween(Suppliers supplier, Date atStartOfDay,
     Date endDate);
+
+
 }
 

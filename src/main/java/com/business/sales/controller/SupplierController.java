@@ -1,6 +1,8 @@
 package com.business.sales.controller;
 
+import com.business.sales.dto.DailySupplySummaryDTO;
 import com.business.sales.dto.SupplierInfoResponse;
+import com.business.sales.dto.UpdatePaymentAndSupplyDTO;
 import com.business.sales.entity.Suppliers;
 import com.business.sales.services.SupplierInfoService;
 import com.business.sales.services.SupplierService;
@@ -58,5 +60,21 @@ public class SupplierController {
             SupplierInfoResponse response = supplierInfoService.getSupplierInfoForMonthAndSupplier(year, month, supplierId);
             return ResponseEntity.ok(response);
         }
+
+        @PostMapping("/update-supply-payment-details")
+        public ResponseEntity<Void> updateSupplierDetails(@RequestBody UpdatePaymentAndSupplyDTO updatePaymentAndSupplyDTO) {
+            supplierInfoService.updateSupplierDetails(updatePaymentAndSupplyDTO);
+            return ResponseEntity.ok().build();
+        }
+
+        
+    @GetMapping("/{supplierId}/supply-summary/{year}/{month}")
+    public ResponseEntity<List<DailySupplySummaryDTO>> getDailySupplySummary(
+            @PathVariable int supplierId,
+            @PathVariable int year,
+            @PathVariable int month) {
+        List<DailySupplySummaryDTO> dailySummary = supplierInfoService.getDailySummary(supplierId, year, month);
+        return ResponseEntity.ok(dailySummary);
+    }
     }
 

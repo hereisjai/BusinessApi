@@ -1,41 +1,21 @@
-package com.business.sales.entity;
+package com.business.sales.dto;
 
-import java.sql.Date;
+import java.util.Date;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-
-@Entity
-public class SupplierPaymentDetail {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer paymentID;
-
-    @ManyToOne
-    @JoinColumn(name = "supplierID", nullable = false)
-    private Suppliers supplier;
-
+public class UpdatePaymentDetailsDTO {
+    
+    private Integer paymentId;
     private Date paymentDate;
     private Double amountPaid;
     private Double amountOwed;
     private String modeOfPayment;
     private String paymentRef;
     private String remarks;
-    public Integer getPaymentID() {
-        return paymentID;
+    public Integer getPaymentId() {
+        return paymentId;
     }
-    public void setPaymentID(Integer paymentID) {
-        this.paymentID = paymentID;
-    }
-    public Suppliers getSupplier() {
-        return supplier;
-    }
-    public void setSupplier(Suppliers supplier) {
-        this.supplier = supplier;
+    public void setPaymentId(Integer paymentId) {
+        this.paymentId = paymentId;
     }
     public Date getPaymentDate() {
         return paymentDate;
@@ -74,4 +54,5 @@ public class SupplierPaymentDetail {
         this.remarks = remarks;
     }
 
+    // Getters and Setters
 }
