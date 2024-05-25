@@ -1,6 +1,6 @@
 package com.business.sales.dto;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class UpdatePaymentDetailsDTO {
     
