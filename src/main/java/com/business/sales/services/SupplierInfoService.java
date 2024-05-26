@@ -86,8 +86,12 @@ public class SupplierInfoService {
                                 supplyDetail.setEveningSupplyMilkAmt(supplyDetailDTO.getEveningSupplyMilkAmt());
                                 supplyDetail.setEveningSupplyFatAmt(supplyDetailDTO.getEveningSupplyFatAmt());
                                 supplyDetail.setRatePerLiter(supplyDetailDTO.getRatePerLiter());
-
-                                milkSupplyDetailRepository.save(supplyDetail);
+                                if (supplyDetailDTO.getEveningSupplyFatAmt() != 0.0 ||
+                                                supplyDetailDTO.getMorningSupplyFatAmt() != 0.0 ||
+                                                supplyDetailDTO.getEveningSupplyMilkAmt() != 0.0 ||
+                                                supplyDetailDTO.getMorningSupplyMilkAmt() != 0.0) {
+                                        milkSupplyDetailRepository.save(supplyDetail);
+                                }
                         }
                 }
 
@@ -104,8 +108,8 @@ public class SupplierInfoService {
                                 paymentDetail.setModeOfPayment(paymentDetailDTO.getModeOfPayment());
                                 paymentDetail.setPaymentRef(paymentDetailDTO.getPaymentRef());
                                 paymentDetail.setRemarks(paymentDetailDTO.getRemarks());
-
-                                supplierPaymentDetailRepository.save(paymentDetail);
+                                if (paymentDetailDTO.getAmountPaid() != 0.0)
+                                        supplierPaymentDetailRepository.save(paymentDetail);
                         }
                 }
         }
