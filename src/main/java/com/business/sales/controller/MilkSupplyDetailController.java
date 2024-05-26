@@ -2,6 +2,7 @@ package com.business.sales.controller;
 import com.business.sales.entity.MilkSupplyDetail;
 import com.business.sales.services.MilkSupplyDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -36,5 +37,11 @@ public class MilkSupplyDetailController {
     @DeleteMapping("/{id}")
     public void deleteMilkSupplyDetail(@PathVariable Integer id) {
         milkSupplyDetailService.deleteMilkSupplyDetail(id);
+    }
+
+    @DeleteMapping("/deleteSuppliersWithIds")
+    public ResponseEntity<String> deleteSuppliers(@RequestBody List<Integer> supplyIds) {
+        milkSupplyDetailService.deleteSuppliersByIds(supplyIds);
+        return ResponseEntity.ok("Suppliers deleted successfully.");
     }
 }

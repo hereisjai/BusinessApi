@@ -3,6 +3,7 @@ package com.business.sales.controller;
 import com.business.sales.entity.SupplierPaymentDetail;
 import com.business.sales.services.SupplierPaymentDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -37,5 +38,11 @@ public class SupplierPaymentDetailController {
     @DeleteMapping("/{id}")
     public void deleteSupplierPaymentDetail(@PathVariable Integer id) {
         supplierPaymentDetailService.deleteSupplierPaymentDetail(id);
+    }
+
+    @DeleteMapping("/deletePaymentWithIds")
+    public ResponseEntity<String> deleteSuppliers(@RequestBody List<Integer> paymentIds) {
+        supplierPaymentDetailService.deleteSuppliersByIds(paymentIds);
+        return ResponseEntity.ok("Suppliers deleted successfully.");
     }
 }

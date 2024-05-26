@@ -31,4 +31,8 @@ public class MilkSupplyDetailService {
     public void deleteMilkSupplyDetail(Integer id) {
         milkSupplyDetailRepository.deleteById(id);
     }
+
+    public void deleteSuppliersByIds(List<Integer> supplyIds) {
+        milkSupplyDetailRepository.deleteAllById(supplyIds);
+    }
 }

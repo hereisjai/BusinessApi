@@ -34,4 +34,9 @@ public class SupplierPaymentDetailService {
     public void deleteSupplierPaymentDetail(Integer id) {
         supplierPaymentDetailRepository.deleteById(id);
     }
+
+    public void deleteSuppliersByIds(List<Integer> paymentIds) {
+        supplierPaymentDetailRepository.deleteAllById(paymentIds);
+
+    }
 }

@@ -51,7 +51,7 @@ public class SupplierController {
          return ResponseEntity.ok("Supplier deleted successfully.");
     }
 
-    @DeleteMapping("/deleteSuppliersWithIds")
+    @DeleteMapping("/deleteSupplyWithIds")
     public ResponseEntity<String> deleteSuppliers(@RequestBody List<Integer> supplierIds) {
         supplierService.deleteSuppliersByIds(supplierIds);
         return ResponseEntity.ok("Suppliers deleted successfully.");
