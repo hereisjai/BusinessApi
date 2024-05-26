@@ -46,8 +46,15 @@ public class SupplierController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteSupplier(@PathVariable Integer id) {
-        supplierService.deleteSupplier(id);
+    public ResponseEntity<String> deleteSupplier(@PathVariable Integer id) {
+         supplierService.deleteSupplier(id);
+         return ResponseEntity.ok("Supplier deleted successfully.");
+    }
+
+    @DeleteMapping("/deleteSuppliersWithIds")
+    public ResponseEntity<String> deleteSuppliers(@RequestBody List<Integer> supplierIds) {
+        supplierService.deleteSuppliersByIds(supplierIds);
+        return ResponseEntity.ok("Suppliers deleted successfully.");
     }
 
     @GetMapping("/{year}/{month}/{supplierId}")

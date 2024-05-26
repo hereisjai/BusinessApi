@@ -33,4 +33,8 @@ public class SupplierService {
     public void deleteSupplier(Integer id) {
         supplierRepository.deleteById(id);
     }
+
+    public void deleteSuppliersByIds(List<Integer> supplierIds) {
+        supplierRepository.deleteAllById(supplierIds);
+    }
 }
