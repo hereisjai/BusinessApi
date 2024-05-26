@@ -18,7 +18,6 @@ public class SupplierController {
     @Autowired
     private SupplierService supplierService;
 
-
     @Autowired
     private SupplierInfoService supplierInfoService;
 
@@ -26,8 +25,6 @@ public class SupplierController {
     public List<Suppliers> getAllSuppliers() {
         return supplierService.getAllSuppliers();
     }
-
-
 
     @GetMapping("/{id}")
     public Suppliers getSupplierById(@PathVariable Integer id) {
@@ -47,8 +44,8 @@ public class SupplierController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteSupplier(@PathVariable Integer id) {
-         supplierService.deleteSupplier(id);
-         return ResponseEntity.ok("Supplier deleted successfully.");
+        supplierService.deleteSupplier(id);
+        return ResponseEntity.ok("Supplier deleted successfully.");
     }
 
     @DeleteMapping("/deleteSupplyWithIds")
@@ -59,22 +56,22 @@ public class SupplierController {
 
     @GetMapping("/{year}/{month}/{supplierId}")
     public ResponseEntity<SupplierInfoResponse> getSupplierInfoForMonth(
-                @PathVariable int year,
-                @PathVariable int month,
-                @PathVariable int supplierId
-    ) {
-            // Implement logic to retrieve supplier information for the specified month, year, and supplierId
-            SupplierInfoResponse response = supplierInfoService.getSupplierInfoForMonthAndSupplier(year, month, supplierId);
-            return ResponseEntity.ok(response);
-        }
+            @PathVariable int year,
+            @PathVariable int month,
+            @PathVariable int supplierId) {
+        // Implement logic to retrieve supplier information for the specified month,
+        // year, and supplierId
+        SupplierInfoResponse response = supplierInfoService.getSupplierInfoForMonthAndSupplier(year, month, supplierId);
+        return ResponseEntity.ok(response);
+    }
 
-        @PostMapping("/update-supply-payment-details")
-        public ResponseEntity<Void> updateSupplierDetails(@RequestBody UpdatePaymentAndSupplyDTO updatePaymentAndSupplyDTO) {
-            supplierInfoService.updateSupplierDetails(updatePaymentAndSupplyDTO);
-            return ResponseEntity.ok().build();
-        }
+    @PostMapping("/update-supply-payment-details")
+    public ResponseEntity<Void> updateSupplierDetails(
+            @RequestBody UpdatePaymentAndSupplyDTO updatePaymentAndSupplyDTO) {
+        supplierInfoService.updateSupplierDetails(updatePaymentAndSupplyDTO);
+        return ResponseEntity.ok().build();
+    }
 
-        
     @GetMapping("/{supplierId}/supply-summary/{year}/{month}")
     public ResponseEntity<List<DailySupplySummaryDTO>> getDailySupplySummary(
             @PathVariable int supplierId,
@@ -83,5 +80,4 @@ public class SupplierController {
         List<DailySupplySummaryDTO> dailySummary = supplierInfoService.getDailySummary(supplierId, year, month);
         return ResponseEntity.ok(dailySummary);
     }
-    }
-
+}

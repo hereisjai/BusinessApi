@@ -24,6 +24,7 @@ public class Suppliers {
         private String bankNameOfBank;
         private String bankNameOfBranch;
         private String bankLocation;
+        private Double ratePerLiter;
         
         public Integer getSupplierID() {
             return supplierID;
@@ -102,6 +103,12 @@ public class Suppliers {
         }
         public void setBankLocation(String bankLocation) {
             this.bankLocation = bankLocation;
+        }
+        public Double getRatePerLiter() {
+            return ratePerLiter;
+        }
+        public void setRatePerLiter(Double ratePerLiter) {
+            this.ratePerLiter = ratePerLiter;
         }
       
 

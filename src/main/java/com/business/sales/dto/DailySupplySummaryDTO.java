@@ -1,7 +1,6 @@
 package com.business.sales.dto;
 
 import java.sql.Date;
-import java.time.LocalDate;
 
 public class DailySupplySummaryDTO {
     private Date date;

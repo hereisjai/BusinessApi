@@ -1,6 +1,5 @@
 package com.business.sales.services;
 
-import java.math.BigDecimal;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.Month;
@@ -72,7 +71,6 @@ public class SupplierInfoService {
                 Suppliers supplier = supplierRepository.findById(updatePaymentAndSupplyDTO.getSupplierId())
                                 .orElseThrow(() -> new ResourceNotFoundException("Supplier not found for id: "
                                                 + updatePaymentAndSupplyDTO.getSupplierId()));
-
                 if (updatePaymentAndSupplyDTO.getSupplyDetails() != null) {
                         for (UpdateSupplyDetailDTO supplyDetailDTO : updatePaymentAndSupplyDTO.getSupplyDetails()) {
                                 MilkSupplyDetail supplyDetail = new MilkSupplyDetail();
@@ -86,12 +84,19 @@ public class SupplierInfoService {
                                 supplyDetail.setEveningSupplyMilkAmt(supplyDetailDTO.getEveningSupplyMilkAmt());
                                 supplyDetail.setEveningSupplyFatAmt(supplyDetailDTO.getEveningSupplyFatAmt());
                                 supplyDetail.setRatePerLiter(supplyDetailDTO.getRatePerLiter());
+                                
                                 if (supplyDetailDTO.getEveningSupplyFatAmt() != 0.0 ||
                                                 supplyDetailDTO.getMorningSupplyFatAmt() != 0.0 ||
                                                 supplyDetailDTO.getEveningSupplyMilkAmt() != 0.0 ||
                                                 supplyDetailDTO.getMorningSupplyMilkAmt() != 0.0) {
                                         milkSupplyDetailRepository.save(supplyDetail);
                                 }
+
+                                if(supplier.getRatePerLiter() != supplyDetailDTO.getRatePerLiter()){
+                                        supplier.setRatePerLiter(supplyDetailDTO.getRatePerLiter());
+                                        supplierRepository.save(supplier);
+                                }
+
                         }
                 }
 
@@ -115,7 +120,6 @@ public class SupplierInfoService {
         }
 
         public List<DailySupplySummaryDTO> getDailySupplySummary(int supplierId, int year, int month) {
-                // TODO Auto-generated method stub
                 LocalDate firstDate = LocalDate.of(year, month, 1);
                 Date startDate = Date.valueOf(firstDate);
                 Date endDate = Date.valueOf(firstDate.with(TemporalAdjusters.lastDayOfMonth()));
