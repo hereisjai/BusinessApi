@@ -1,6 +1,5 @@
 package com.business.sales.services;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,8 +30,11 @@ public class ExpenseTransactionService {
         expenseTransactionRepository.deleteById(id);
     }
 
-
     public List<ExpenseTransactionEntity> getTransactionsByExpenseType(String expenseType) {
         return expenseTransactionRepository.findByExpenseType(expenseType);
+    }
+
+    public List<ExpenseTransactionEntity> getTransactionsByMonthAndYear(int month, int year) {
+        return expenseTransactionRepository.findByMonthAndYear(month, year);
     }
 }

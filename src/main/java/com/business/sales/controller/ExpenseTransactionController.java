@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/transactions")
+@RequestMapping("/api/expenseTransactions")
 public class ExpenseTransactionController {
 
     @Autowired
@@ -31,6 +31,13 @@ public class ExpenseTransactionController {
     @GetMapping("/by-expense-type")
     public List<ExpenseTransactionEntity> getTransactionsByExpenseType(@RequestParam String expenseType) {
         return transactionService.getTransactionsByExpenseType(expenseType);
+    }
+
+    @GetMapping("/by-month")
+    public ResponseEntity<List<ExpenseTransactionEntity>> getTransactionsByMonthAndYear(
+            @RequestParam int month, @RequestParam int year) {
+        List<ExpenseTransactionEntity> transactions = transactionService.getTransactionsByMonthAndYear(month, year);
+        return ResponseEntity.ok(transactions);
     }
 
     @PostMapping
