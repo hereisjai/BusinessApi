@@ -11,7 +11,7 @@ import com.business.sales.entity.ExpenseTransactionEntity;
 public interface ExpenseTransactionRepository extends JpaRepository<ExpenseTransactionEntity, Long> {
     List<ExpenseTransactionEntity> findByExpenseType(String expenseType);
 
-     @Query("SELECT t FROM Transaction t WHERE MONTH(t.date) = :month AND YEAR(t.date) = :year")
+     @Query("SELECT t FROM ExpenseTransactionEntity t WHERE MONTH(t.date) = :month AND YEAR(t.date) = :year")
     List<ExpenseTransactionEntity> findByMonthAndYear(int month, int year);
 }
 
